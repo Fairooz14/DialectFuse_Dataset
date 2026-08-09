@@ -27,51 +27,6 @@ Key design choices:
 - Loss = **focal loss + label smoothing + class weighting**, tuned for a
   long-tailed emotion label distribution.
 
-## Repository layout
-
-```
-dialect-fusion-ctg/
-├── src/dialect_fusion/
-│   ├── config.py                # all paths + hyperparameters
-│   ├── data/
-│   │   ├── loading.py           # CSV loading/cleaning
-│   │   ├── label_noise.py       # 4-strategy label-noise detection (cleanlab + custom)
-│   │   ├── vocab.py             # character vocabulary
-│   │   ├── augment.py           # light word-level augmentation
-│   │   └── dataset.py           # FusionDataset, collate, DataLoader factory
-│   ├── models/
-│   │   ├── char_encoder.py      # CharBiLSTMEncoder (attention pooling)
-│   │   ├── fusion_classifier.py # 4-branch FusionClassifier
-│   │   └── losses.py            # FocalLoss
-│   ├── training/
-│   │   ├── optim.py             # 3-LR-group optimizer + cosine schedule
-│   │   ├── evaluate.py          # shared eval loop
-│   │   └── train.py             # training loop w/ early stop + overfit guard
-│   ├── analysis/
-│   │   ├── visualization.py     # dataset stats, training curves, confusion matrix
-│   │   ├── calibration.py       # ECE + temperature scaling
-│   │   ├── case_study.py        # single-sentence qualitative prediction
-│   │   ├── explainability.py    # SHAP (per-branch) + LIME
-│   │   ├── ablation.py          # branch-ablation study
-│   │   ├── error_analysis.py    # 3-type error taxonomy
-│   │   ├── significance.py      # McNemar significance tests
-│   │   ├── expandability.py     # class-growth / new-branch demos
-│   │   └── results.py           # final results table
-│   ├── inference.py             # reload a trained checkpoint + data artifacts
-│   └── utils/                   # seeding, device, plotting style
-├── scripts/
-│   ├── detect_label_noise.py    # CLI: flag/clean noisy training labels
-│   ├── train.py                 # CLI: train the model
-│   ├── evaluate.py              # CLI: test-set evaluation + confusion matrix
-│   └── run_analysis.py          # CLI: full extended analysis suite
-├── notebooks/                   # original research notebook (reference only)
-├── data/                        # place train/val/test CSVs here
-├── outputs/
-│   ├── checkpoints/             # best_model.pt, char_vocab.pt, label_map.json
-│   └── figures/                 # all generated PDFs/PNGs
-└── tests/                       # offline smoke tests
-```
-
 ## Installation
 
 ```bash
