@@ -3,9 +3,6 @@
 Multi-input late-fusion emotion classification for **Chittagonian Bangla**
 (a low-resource Bangla dialect spoken in southeastern Bangladesh).
 
-This repository is a research-code refactor of an original Colab notebook
-into an installable, script-driven Python package suitable for GitHub /
-reproducible research use.
 
 ## Architecture
 
@@ -86,31 +83,9 @@ pip install -e .
 ## Data
 
 Place `train_uniform50.csv`, `val_uniform50.csv`, `test_uniform50.csv` in
-`data/` (see `data/README.md` for the required columns). This repository
-does not include the dataset itself.
+`data/` (see `CTG_Sentiment/README.md` for the required columns). 
 
-## Usage
-
-```bash
-# 1. (optional) flag and clean noisy training labels
-python scripts/detect_label_noise.py --data-dir data --strategy B
-
-# 2. train
-python scripts/train.py --data-dir data --train-csv data/train_clean.csv \
-    --save-dir outputs/checkpoints --fig-dir outputs/figures --epochs 15
-
-# 3. evaluate on the held-out test set
-python scripts/evaluate.py --data-dir data --save-dir outputs/checkpoints \
-    --fig-dir outputs/figures
-
-# 4. full analysis suite: calibration, ablation, error taxonomy, McNemar,
-#    class-expandability demo, case study, SHAP/LIME, results table
-python scripts/run_analysis.py --data-dir data --save-dir outputs/checkpoints \
-    --fig-dir outputs/figures
-# (SHAP/LIME are the slowest step; skip with --skip-explainability)
-```
-
-Every script also works as an importable module — see `scripts/*.py` for
+Every script also works as an importable module; see `scripts/*.py` for
 the small amount of glue code, all real logic lives in `src/dialect_fusion/`.
 
 ## Label noise detection
@@ -145,19 +120,8 @@ research notebook against a trained checkpoint:
   class without retraining the backbones, and documents how to add a fifth
   language branch.
 
-## Testing
 
-```bash
-pytest tests/
-```
 
-The smoke tests are offline and don't require the dataset or downloading
-pretrained transformer weights.
-
-## Citation
-
-If you use this code, please cite the accompanying paper/report describing
-the Chittagong Bangla dialect emotion dataset and fusion architecture.
 
 ## License
 
