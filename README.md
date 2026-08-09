@@ -1,6 +1,6 @@
 # Dialect Fusion CTG
 
-Multi-input late-fusion emotion classification for **Chittagonian Bangla**
+Multi-branch late-fusion emotion classification for **Chittagonian Bangla**
 (a low-resource Bangla dialect spoken in southeastern Bangladesh).
 
 
@@ -119,7 +119,6 @@ research notebook against a trained checkpoint:
 - **Expandability**: demonstrates growing the output head to a new emotion
   class without retraining the backbones, and documents how to add a fifth
   language branch.
-
 
 
 
