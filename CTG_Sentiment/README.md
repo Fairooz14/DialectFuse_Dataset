@@ -1,6 +1,6 @@
 # Data
 
-This folder is expected to contain three CSV:
+This folder is contain three CSV:
 
 ```
 train_uniform50.csv
